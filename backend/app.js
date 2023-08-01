@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 // импортируем монгус
 const mongoose = require('mongoose');
 // берем присвоение порта из лобального окружения
-const { PORT = 3030 } = process.env;
+const { PORT = 3000 } = process.env;
 // включаем кукаПарсер
 const cookieParser = require('cookie-parser');
 // подключим обработчик ошибок от celebrate

@@ -1,6 +1,8 @@
 const ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
 const allowedCors = [
+  'http://marlo.students.nomoreparties.co',
+  'https://marlo.students.nomoreparties.co',
   'http://localhost:3000',
   'https://localhost:3000',
   // 'http://localhost:3000/react-mesto-auth',

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 // импортируем монгус
 const mongoose = require('mongoose');
 // берем присвоение порта из лобального окружения
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 // включаем кукаПарсер
 const cookieParser = require('cookie-parser');
 // подключим обработчик ошибок от celebrate
@@ -16,6 +16,9 @@ const ErrorNotFound = require('./errors/ErrorNotFound');
 const { URL_NOT_FOUND } = require('./utils/constants');
 // повдключим роуты с авторизацией
 const router = require('./routes');
+// корс
+const cors = require('./middlewares/cors');
+
 // запускаем приложение из пакета экспресс
 const app = express();
 
@@ -27,6 +30,9 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
   .catch((error) => {
     console.log(`Ошибка соединения с базой данных ${error.message}`);
   });
+
+// корс
+app.use(cors);
 
 // используем bodyParser
 app.use(bodyParser.json());

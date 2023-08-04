@@ -87,6 +87,15 @@ const getUserInfo = (req, res, next) => {
     .catch(next);
 };
 
+const logoutUser = (req, res, next) => {
+  try {
+    res.clearCookie('jwt', { httpOnly: true }).send({ message: 'JWT DELETED Выход' });
+  } catch (err) {
+    next(err);
+  }
+
+};
+
 // функция вызова списка user
 const getUsers = (req, res, next) => {
   User.find({})
@@ -148,4 +157,5 @@ module.exports = {
   getUsers,
   updateUser,
   updateAvatar,
+  logoutUser,
 };

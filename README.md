@@ -12,7 +12,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.131.48
+IP 84.201.131.48
 
 Frontend https://marlo.students.nomoreparties.co
 

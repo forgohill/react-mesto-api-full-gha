@@ -4,8 +4,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 // импортируем монгус
 const mongoose = require('mongoose');
+
+require('dotenv').config();
+
 // берем присвоение порта из лобального окружения
 const { PORT = 3000 } = process.env;
+
 // включаем кукаПарсер
 const cookieParser = require('cookie-parser');
 // подключим обработчик ошибок от celebrate
@@ -64,7 +68,6 @@ app.use('/', (req, res, next) => {
 app.use(errors());
 // обработка глобальных ошибок
 app.use(require('./middlewares/errorGlobal'));
-
 
 // создаем слушателя PORT, 2й аргумент колбек — выводим сообщение
 app.listen(PORT, () => console.log(`Приложение можно прослушать на порту: ${PORT}!`));

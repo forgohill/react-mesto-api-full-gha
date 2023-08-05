@@ -1,6 +1,6 @@
 const configApi = {
   // url: 'http://localhost:3000/',
-  url: 'http://api.marlo.students.nomoreparties.co/',
+  url: 'https://api.marlo.students.nomoreparties.co/',
   headers: {
     'content-type': 'application/json',
   },

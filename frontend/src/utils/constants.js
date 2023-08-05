@@ -51,7 +51,7 @@ export const configApi = {
 
 export const configAuth = {
   // BASE_URL: 'http://localhost:3000',
-  BASE_URL: 'http://api.marlo.students.nomoreparties.co',
+  BASE_URL: 'https://api.marlo.students.nomoreparties.co',
   headers: {
     'Content-type': 'application/json',
   },

@@ -89,7 +89,7 @@ const getUserInfo = (req, res, next) => {
 
 const logoutUser = (req, res, next) => {
   try {
-    res.clearCookie('jwt', { httpOnly: true }).send({ message: 'JWT DELETED Выход' });
+    res.clearCookie('jwt', { httpOnly: true }).send({ exit: 'user logged out' });
   } catch (err) {
     next(err);
   }

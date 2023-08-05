@@ -16,6 +16,8 @@ const ErrorNotFound = require('./errors/ErrorNotFound');
 const { URL_NOT_FOUND } = require('./utils/constants');
 // повдключим роуты с авторизацией
 const router = require('./routes');
+// подключам логер
+const { logger, errorLogger } = require('./middlewares/logger');
 // корс
 const cors = require('./middlewares/cors');
 
@@ -31,8 +33,18 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb')
     console.log(`Ошибка соединения с базой данных ${error.message}`);
   });
 
+// логер запросов
+app.use(logger);
+
 // корс
 app.use(cors);
+
+// краштест
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 // используем bodyParser
 app.use(bodyParser.json());
@@ -40,6 +52,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 // подключаем роутеры
 app.use(router);
+
+// логер ошибок после роутов до обработчиков ошибок
+app.use(errorLogger);
 
 // обработка ошибки не правильно роута URL_NOT_FOUND
 app.use('/', (req, res, next) => {
@@ -49,6 +64,7 @@ app.use('/', (req, res, next) => {
 app.use(errors());
 // обработка глобальных ошибок
 app.use(require('./middlewares/errorGlobal'));
+
 
 // создаем слушателя PORT, 2й аргумент колбек — выводим сообщение
 app.listen(PORT, () => console.log(`Приложение можно прослушать на порту: ${PORT}!`));
